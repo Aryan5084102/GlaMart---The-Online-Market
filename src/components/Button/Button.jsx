@@ -1,10 +1,11 @@
 import React, {useState,useContext } from 'react';
 import cartContext from '../context/cart-context';
+import CountItemCart from '../context/count-item-cart'
 import { Link, useNavigate } from 'react-router-dom';
 
 function Button(props) {
   const  productId= props.id;
-  
+  const {countItemCart, setCountItemCart} = useContext(CountItemCart)
   const {cart,addToCart} = useContext(cartContext);
   const [addToCartText, setAddToCartText] = useState(()=>{
     return cart.includes(productId)?"Go to Cart":"Add to Cart"
@@ -18,6 +19,7 @@ function Button(props) {
     if (addToCartText === "Add to Cart"){
       setAddToCartText("Go to Cart");
       addToCart(productId);
+      setCountItemCart(countItemCart + 1)
     }else{
        navigate("/cart")
     }

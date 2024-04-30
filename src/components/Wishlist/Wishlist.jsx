@@ -6,18 +6,20 @@ import wishContext from '../context/wish-context'
 import EmptyWishlist from './EmptyWishlist'
 import { Rating } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import WishCountItem from '../context/wish count-item'
 
 function Wishlist(props) {
   const wishId = props.id
 
   const { wholeProduct } = useContext(CartContext)
   const { wishlist, removeFromWishlist } = useContext(wishContext)
+  const {wishCountItem, setWishCountItem} = useContext(WishCountItem)
   const [filterWishlistItem, setFilterWishlistItem] = useState([])
 
   const navigate = useNavigate()
   useEffect(() => {
     wishlistData()
-  }, [])
+  }, [wishlist])
 
   const wishlistData = () => {
     const filterWishlist = wholeProduct.filter((item) => wishlist.includes(item.id))
@@ -26,7 +28,9 @@ function Wishlist(props) {
 
   const handleRemoveFromWishlist = (wishId) => {
     removeFromWishlist(wishId)
+    setWishCountItem(wishCountItem - 1)
     wishlistData()
+
   }
 
   return (

@@ -6,10 +6,12 @@ import Modal from './Modal'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EmptyCart from './EmptyCart'
+import CountItemCart from '../context/count-item-cart'
 
 
 function Cart(props) {
   const { cart, removeFromCart, wholeProduct } = useContext(cartContext)
+  const {countItemCart, setCountItemCart} = useContext(CountItemCart)
   const [filteredData, setFilteredData] = useState([])
   const [name, setName] = useState("")
   const [address, setAddress] = useState("")
@@ -25,17 +27,18 @@ function Cart(props) {
   }
   const DecreaseItem = () =>{
     if(moreItem > 1)
-    setMoreItem(moreItem -1)
+    setMoreItem(moreItem -1) 
   }
   
   
   useEffect(() => {
     filterData();
-  }, [])
+  }, [cart])
 
   const removeFromCartButtonHandler = (id) => {
     removeFromCart(id);
     filterData();
+    setCountItemCart(countItemCart - 1)
   }
 
   const filterData = () => {
@@ -95,14 +98,6 @@ function Cart(props) {
       address,
       pincode,
       phoneNumber,
-      // date: new Date().toLocalString(
-      //   "en-US",
-      //   {
-      //     month: "short",
-      //     day: "2-digit",
-      //     year: "numeric",
-      //   }
-      // )
     }
     var options = {
       key: "rzp_test_DHRXCwOsSU6EQ7",
@@ -158,6 +153,8 @@ function Cart(props) {
     var pay = new window.Razorpay(options);
     pay.open();
   }
+
+
   return (
      
     filteredData.length !== 0 ?
@@ -228,7 +225,7 @@ function Cart(props) {
                     </div>
                     <div className="ml-6 flex text-sm">
                       <button type="button" onClick={() => removeFromCartButtonHandler(product.id)} className="flex items-center space-x-1 px-2 py-1 pl-0">
-                        <Trash size={12} className="text-red-500" />
+                        {/* <Trash size={12} className="text-red-500" /> */}
                         <span className="text-xs font-medium text-red-500">Remove</span>
                       </button>
                     </div>

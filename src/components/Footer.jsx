@@ -1,5 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
+import logo from '../assets/favicon.png'
+
 
 function Footer() {
   return (
@@ -10,7 +12,7 @@ function Footer() {
         <div className="w-full px-4 md:w-1/2 lg:px-0 flex flex-col ">
             <img
                 className='h-24 w-40 mb-5 '
-             src='./src/favicon.png' alt='Error404' />
+             src={logo} alt='Error404' />
           <h1 className="max-w-sm text-2xl font-bold">GlaMart - The Online Market</h1>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-6 md:mt-0 lg:w-3/4 lg:grid-cols-3">
@@ -35,7 +37,7 @@ function Footer() {
         </div>
       </div>
       <div className='copyright text-center pt-1 w-full h-8 text-white bg-[#0B7A74]'>
-            Build by Aryan Verma &copy; Copyright 2024. All Right Reserved by GlaryanMart.
+            Build by Aryan Verma &copy; Copyright 2024. All Right Reserved by GlaMart.
       </div>
     </footer>
 </div>

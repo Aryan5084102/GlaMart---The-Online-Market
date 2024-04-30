@@ -12,9 +12,9 @@ function MensItems() {
   return (
     <>
       <ToastContainer limit={3}
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}

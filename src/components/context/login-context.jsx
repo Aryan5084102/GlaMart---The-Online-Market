@@ -1,3 +1,3 @@
-import { createContext, useContext } from "react";
-const loginContext = useContext(createContext)
-export default loginContext
+import { createContext} from "react";
+const LoginContext = createContext()
+export default LoginContext
