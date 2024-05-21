@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaHome, FaShoppingCart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { IoIosHeartEmpty } from "react-icons/io";
 import searchContext from './context/search-context';
-// import { CgProfile } from "react-icons/cg";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Bounce } from 'react-toastify';
 import Badge from '@mui/material/Badge';
 import CountItemCart from './context/count-item-cart';
 import WishCountItem from './context/wish count-item';
 import LoginContext from './context/login-context';
 import logo from '../assets/favicon.png'
-import { RxHamburgerMenu } from "react-icons/rx";
 
 function Navbar() {
   const {userData} = useContext(LoginContext)
@@ -31,18 +26,6 @@ function Navbar() {
 
   return (
     <>
-      <ToastContainer limit={3}
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        transition={Bounce}
-      />
       <div className='flex bg-[#D7E4C0] justify-between items-center px-4 py-2 sticky top-0 left-0 z-10 '>
         <Link to="/" className='flex items-center '>
           <div className='w-20 h-16 mr-1  '> <img  src={logo} alt='Logo' /> </div>

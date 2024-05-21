@@ -35,7 +35,7 @@ const router = createBrowserRouter(
         <Route path='/singlepage/:id' element={<Singlepage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/testing' element={<Testing />} />
-        {/* <Route path='/paymentSuccess' element={<PaymentSuccess />} /> */}
+        <Route path='/paymentsuccess' element={<PaymentSuccess />} />
     </Route>
   )
 )

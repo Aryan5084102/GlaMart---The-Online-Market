@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../Navbar'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet,} from 'react-router-dom'
 import Footer from '../Footer'
 import CartContext from '../context/cart-context'
 import axios from 'axios'
-import {toast } from 'react-toastify';
 import wishContext from '../context/wish-context'
 import searchContext from '../context/search-context'
 import CountItemCart from '../context/count-item-cart'
@@ -99,13 +98,11 @@ function Layout() {
     if (response.ok) {
       sessionStorage.setItem("userData", JSON.stringify(data));
       setTimeout(function () {
-        toast.success("Log in Successfully !")
       }, 2000);
 
       navigate(-1)
     } else {
       console.error('Login failed');
-      toast.warning(" Invalid Credential !")
     }
   };
 

@@ -1,19 +1,33 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import CountItemCart from '../context/count-item-cart';
 import { useNavigate } from 'react-router-dom';
+import CartContext from '../context/cart-context';
 
-function PaymentSuccess() {
+
+function paymentSuccess() {
+    // const { setCountItemCart} = useContext(CountItemCart)
+    // const { cart} = useContext(CartContext)
     const navigate = useNavigate()
+    // console.log(setCountItemCart , "setCountItemCart")
+    // console.log(cart, "cart")
+
+
+
+    // useEffect(()=>{
+    //     if(setCountItemCart === 0){
+    //         setCountItemCart
+    //     }
+    // }, [setCountItemCart, paymentSuccess, cart])
     return (
         <>
-            <div className='w-full h-full flex flex-col bg-red-500 '>
-                <img src='https://i.gifer.com/XD4x.gif' alt='Payment Successful' />
-                <h1 className='text-5xl font-extrabold text-[#0B7A74]'>Payment Successful</h1>
+            <div className='w-full h-full flex justify-center items-center flex-col'>
+                <img src='https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png' alt='Payment Success' />
                 <button
                     onClick={() => { navigate('/') }}
-                    className='px-3 py-2 my-3 bg-[#0B7A74] text-[#ffff]'>Go To Shopping
+                    className='px-3 py-2 my-3 bg-[#0B7A74] text-[#ffff]'>Go To More Shopping
                 </button>
             </div>
         </>
     )
 }
-export default  PaymentSuccess;
+export default paymentSuccess;

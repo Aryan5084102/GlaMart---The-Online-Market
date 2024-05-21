@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import cartContext from '../context/cart-context'
-import { Trash } from 'lucide-react'
+// import { Trash } from 'lucide-react'
 import { Rating } from '@mui/material'
 import Modal from './Modal'
 import { toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import CountItemCart from '../context/count-item-cart'
 import { useNavigate } from 'react-router-dom'
 
 
-function Cart(props) {
+function Cart() {
   const { cart, removeFromCart, wholeProduct } = useContext(cartContext)
   const {countItemCart, setCountItemCart} = useContext(CountItemCart)
   const [filteredData, setFilteredData] = useState([])
@@ -120,40 +120,39 @@ function Cart(props) {
         contact: "8756119548",
       },
       handler: function (response) {
-        toast.success('Payment Successful')
-    navigate("/")
+          toast.success('Payment Successful')
+          navigate("/paymentsuccess")
+        const paymentId = response.razorpay_payment_id
+        // store in firebase 
+        const orderInfo = {
+          cartItems,
+          addressInfo,
+          date: new Date().toLocaleString(
+            "en-US",
+            {
+              month: "short",
+              day: "2-digit",
+              year: "numeric",
+            }
+          ),
+          email: JSON.parse(localStorage.getItem("user")).user.email,
+          userid: JSON.parse(localStorage.getItem("user")).user.uid,
+          paymentId
+        }
 
-    //     const paymentId = response.razorpay_payment_id
-    //     // store in firebase 
-    //     const orderInfo = {
-    //       cartItems,
-    //       addressInfo,
-    //       date: new Date().toLocaleString(
-    //         "en-US",
-    //         {
-    //           month: "short",
-    //           day: "2-digit",
-    //           year: "numeric",
-    //         }
-    //       ),
-    //       email: JSON.parse(localStorage.getItem("user")).user.email,
-    //       userid: JSON.parse(localStorage.getItem("user")).user.uid,
-    //       paymentId
-    //     }
+        try {
+          const result = addDoc(collection(fireDB, "orders"), orderInfo)
+        } catch (error) {
+          console.log(error)
+        }
+      },
 
-    //     try {
-    //       const result = addDoc(collection(fireDB, "orders"), orderInfo)
-    //     } catch (error) {
-    //       console.log(error)
-    //     }
-    //   },
-
-    //   theme: {
-    //     color: "#3399cc"
+      theme: {
+        color: "#3399cc"
       }
     };
-    var pay = new window.Razorpay(options);
-    pay.open();
+      var pay = new window.Razorpay(options);
+      pay.open();
   }
   return (
     filteredData.length !== 0 ?
