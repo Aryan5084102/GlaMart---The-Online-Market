@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EmptyCart from './EmptyCart'
 import CountItemCart from '../context/count-item-cart'
+import { useNavigate } from 'react-router-dom'
 
 
 function Cart(props) {
@@ -21,6 +22,8 @@ function Cart(props) {
   const [discountPrice, setDiscountPrice] = useState(0)
   const [shipping, setShipping] = useState(0)
   const [moreItem, setMoreItem] = useState(1)
+
+  const navigate = useNavigate()
 
   const IncreaseItem =() =>{
     setMoreItem(moreItem + 1)
@@ -100,6 +103,9 @@ function Cart(props) {
       phoneNumber,
     }
     var options = {
+
+
+
       key: "rzp_test_DHRXCwOsSU6EQ7",
       key_secret: "TzoSK7XqA91akBb5D98L6CaA",
       amount: parseInt(overallCost * 100 * moreItem),
@@ -114,49 +120,42 @@ function Cart(props) {
         contact: "8756119548",
       },
       handler: function (response) {
-
-        // console.log(response)
         toast.success('Payment Successful')
-          // console.log(response, "data in response")
-        const paymentId = response.razorpay_payment_id
+    navigate("/")
 
-        // console.log(paymentId, "data in paymentId")
+    //     const paymentId = response.razorpay_payment_id
+    //     // store in firebase 
+    //     const orderInfo = {
+    //       cartItems,
+    //       addressInfo,
+    //       date: new Date().toLocaleString(
+    //         "en-US",
+    //         {
+    //           month: "short",
+    //           day: "2-digit",
+    //           year: "numeric",
+    //         }
+    //       ),
+    //       email: JSON.parse(localStorage.getItem("user")).user.email,
+    //       userid: JSON.parse(localStorage.getItem("user")).user.uid,
+    //       paymentId
+    //     }
 
-        // store in firebase 
-        const orderInfo = {
-          cartItems,
-          addressInfo,
-          date: new Date().toLocaleString(
-            "en-US",
-            {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            }
-          ),
-          email: JSON.parse(localStorage.getItem("user")).user.email,
-          userid: JSON.parse(localStorage.getItem("user")).user.uid,
-          paymentId
-        }
+    //     try {
+    //       const result = addDoc(collection(fireDB, "orders"), orderInfo)
+    //     } catch (error) {
+    //       console.log(error)
+    //     }
+    //   },
 
-        try {
-          const result = addDoc(collection(fireDB, "orders"), orderInfo)
-        } catch (error) {
-          console.log(error)
-        }
-      },
-
-      theme: {
-        color: "#3399cc"
+    //   theme: {
+    //     color: "#3399cc"
       }
     };
     var pay = new window.Razorpay(options);
     pay.open();
   }
-
-
   return (
-     
     filteredData.length !== 0 ?
 
    ( <div className="mx-auto max-w-7xl px-2 lg:px-0">
@@ -287,7 +286,6 @@ function Cart(props) {
       </div>
     </div>) :
     
-
    ( <EmptyCart />)
     
   )

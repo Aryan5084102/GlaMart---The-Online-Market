@@ -16,6 +16,7 @@ import Sunglass from './components/Caterory Section/Sunglass.jsx'
 import Jewellery from './components/Caterory Section/Jewellery.jsx'
 import Login from './components/Loginpage/Login.jsx'
 import Testing from './Testing.jsx'
+import PaymentSuccess from './components/Cart/PaymentSuccess.jsx'
 
 
 const router = createBrowserRouter(
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         <Route path='/singlepage/:id' element={<Singlepage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/testing' element={<Testing />} />
+        {/* <Route path='/paymentSuccess' element={<PaymentSuccess />} /> */}
     </Route>
   )
 )
