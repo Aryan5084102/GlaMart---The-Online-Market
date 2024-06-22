@@ -67,8 +67,8 @@ function Singlepage() {
                             <h2 className="text-sm font-semibold tracking-widest text-gray-500">{productDetail.brand}</h2>
                             <h1 className="my-3 text-2xl font-semibold text-black">{productDetail.title}</h1>
                             <div className="mb-2 mt-6 flex items-center border-b-2 ">
-                                <span className="title-font text-xl font-bold text-[#0B7A74] mr-3"> &#8377;{productDetail.price * 10}</span>
-                                <span className="title-font text-[15px] font-bold text-gray-900 mr-3"><del>&#8377;{((productDetail.price * 10) + (productDetail.discountPercentage / 100 * productDetail.price * 10)).toFixed(2)}</del></span>
+                                <span className="title-font text-xl font-bold text-[#0B7A74] mr-3"> &#8377;{(productDetail.price * 10).toFixed(0)}</span>
+                                <span className="title-font text-[15px] font-bold text-gray-900 mr-3"><del>&#8377;{((productDetail.price * 10) + (productDetail.discountPercentage / 100 * productDetail.price * 10)).toFixed(0)}</del></span>
                                 <span className="title-font text-[16px] font-bold text-[#0B7A74]">{productDetail.discountPercentage}% off</span>
                             </div>
                             <Rating name="read-only" defaultValue={productDetail.rating} precision={0.5} readOnly />

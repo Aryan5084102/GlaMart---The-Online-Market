@@ -108,7 +108,7 @@ function Cart() {
 
       key: "rzp_test_DHRXCwOsSU6EQ7",
       key_secret: "TzoSK7XqA91akBb5D98L6CaA",
-      amount: parseInt(overallCost * 100 * moreItem),
+      amount: parseInt((overallCost * 100 * moreItem).toFixed(0)),
       currency: "INR",
       order_receipt: 'order_rcptid_' + name,
       name: "GlaMart",
@@ -193,10 +193,10 @@ function Cart() {
                           </div>
                           <div className="mt-1 flex items-end">
                             <p className="text-2xl font-medium text-[#0B7A74]">&#8377;
-                              {(product.price * 10)* moreItem}
+                              {((product.price * 10)* moreItem).toFixed(0)}
                             </p> &nbsp;
                             <p className="text-xs font-medium text-gray-800 line-through">
-                              &nbsp;&nbsp; &#8377;{(((product.price * 10) + (product.discountPercentage / 100 * product.price * 10))* moreItem).toFixed(2) }
+                              &nbsp;&nbsp; &#8377;{(((product.price * 10) + (product.discountPercentage / 100 * product.price * 10))* moreItem).toFixed(0) }
                             </p>
                             &nbsp;&nbsp;
                             <p className="text-sm font-medium text-[#0B7A74]">{product.discountPercentage}% off</p>
@@ -247,13 +247,13 @@ function Cart() {
               <dl className=" space-y-1 px-2 py-4">
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-800">Total Price</dt>
-                  <dd className="text-sm font-medium text-gray-900">₹ {totalPrice * 10 * moreItem }</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹ {(totalPrice * 10 * moreItem).toFixed(0) }</dd>
                 </div>
                 <div className="flex items-center justify-between pt-4">
                   <dt className="flex items-center text-sm text-gray-800">
                     <span> Total Discount</span>
                   </dt>
-                  <dd className="text-sm font-medium text-[#0B7A74]">- ₹ {(discountPrice * moreItem).toFixed(2)}</dd>
+                  <dd className="text-sm font-medium text-[#0B7A74]">- ₹ {(discountPrice * moreItem).toFixed(0)}</dd>
                 </div>
                 <div className="flex items-center justify-between py-4">
                   <dt className="flex text-sm text-gray-800">
@@ -263,11 +263,11 @@ function Cart() {
                 </div>
                 <div className="flex items-center justify-between border-y border-dashed py-4 ">
                   <dt className="text-base font-medium text-gray-900">Total Amount</dt>
-                  <dd className="text-base font-medium text-gray-900">₹ {overallCost * moreItem}</dd>
+                  <dd className="text-base font-medium text-gray-900">₹ {(overallCost * moreItem).toFixed(0)}</dd>
                 </div>
               </dl>
               <div className="px-2 pb-4 font-medium text-[#0B7A74]">
-                You will save ₹ {(discountPrice * moreItem).toFixed(2)} on this order
+                You will save ₹ {(discountPrice * moreItem).toFixed(0)} on this order
               </div>
             </div>
             <Modal name={name}

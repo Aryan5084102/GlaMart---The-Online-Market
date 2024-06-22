@@ -41,7 +41,7 @@ function Card({product}) {
                 <div  onClick={()=>navigate(`/singlepage/${product.id}`)}
                  className='pt-1 h-24 flex justify-center items-center flex-col  '>
                    <div className='title text-center pl-1 text-[18px] w-44 overflow-hidden whitespace-nowrap '>{product.title}</div>
-                      <p className='rate text-center  text-[16px] text-[#0B7A74]'> <span className='text-[16px] font-semibold'>Price:</span> &#8377;{product.price * 10}</p>
+                      <p className='rate text-center  text-[16px] text-[#0B7A74]'> <span className='text-[16px] font-semibold'>Price:</span> &#8377;{(product.price * 10).toFixed(0)}</p>
                       <div className='text-center'>
                         <Rating name="read-only" defaultValue={product.rating} precision={0.5} readOnly />
                       </div>

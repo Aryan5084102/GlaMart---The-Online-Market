@@ -31,7 +31,7 @@ function Tshirt() {
             <div className='pt-1 h-24 flex justify-center flex-col'>
               <div className='title text-center pl-1 text-[18px] '>{items.title}</div>
               <p className='rate text-center text-[16px] text-[#0B7A74]'>
-                <span className='text-[16px] font-semibold'>Price:</span> &#8377;{items.price * 10}
+                <span className='text-[16px] font-semibold'>Price:</span> &#8377;{(items.price * 10).toFixed(0)}
               </p>
               <div className='text-center'>
                 <Rating name="read-only" defaultValue={items.rating} precision={0.5} readOnly />
